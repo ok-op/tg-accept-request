@@ -26,9 +26,10 @@ bot.start(async (ctx) => {
     }, {
         caption: welcomeMessage,
         parse_mode: 'Markdown',
-        reply_markup: Markup.inlineKeyboard([
-            [{ text: '✨ Join Our Update Channel ✨', url: 'https://t.me/Opleech_WD' }],
-            [{ text: '✉️ টপিক গ্রুপ জয়েন করুন ✉️', url: 'https://t.me/+XfmrBSzTyRFlZTI9' }] // Replace with your second channel link
+        reply_markup: {
+            inline_keyboard: [
+                [{ text: '✨ Join Our Update Channel ✨', url: 'https://t.me/Opleech_WD' }],
+                [{ text: '✉️ টপিক গ্রুপ জয়েন করুন ✉️', url: 'https://t.me/+XfmrBSzTyRFlZTI9' }] // Replace with your second channel link
         ])
     });
 });
