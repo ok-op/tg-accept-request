@@ -29,7 +29,7 @@ bot.start(async (ctx) => {
         reply_markup: Markup.inlineKeyboard([
             [{ text: '✨ Join Our Update Channel ✨', url: 'https://t.me/Opleech_WD' }],
             [{ text: '✉️ টপিক গ্রুপ জয়েন করুন ✉️', url: 'https://t.me/+XfmrBSzTyRFlZTI9' }] // Replace with your second channel link
-        ])
+        ]).resize() // Optional: Resize buttons to fit the screen
     });
 });
 
