@@ -15,6 +15,24 @@ const URL = process.env.URL || 'https://your-domain.com';  // Replace with your 
 
 bot.telegram.setWebhook(`${URL}${WEBHOOK_PATH}`);
 
+// Handle the /start command
+bot.start(async (ctx) => {
+    const welcomeMessage = `👋 Welcome to our channel! [${from.first_name}](tg://user?id=${from.id}), We're glad to have you here.`;
+    
+    // Send a welcome image with buttons
+    await ctx.telegram.sendPhoto(ctx.chat.id, {
+        source: 'angelLogo/angel.jpg'  // Replace with the correct image path or URL
+    }, {
+        caption: welcomeMessage,
+        parse_mode: 'Markdown',
+        reply_markup: Markup.inlineKeyboard([
+            [{ text: '✨ Join Our update channel ✨', url: 'https://t.me/Opleech_WD' }],
+            [{ text: '✉️ টপিক গ্রুপ জয়েন করুন ✉️', url: 'https://t.me/+XfmrBSzTyRFlZTI9' }] // Replace with your second channel link
+        ])
+    });
+});
+
+// Handle join requests
 bot.on('chat_join_request', async (ctx) => {
     const { from, chat } = ctx.update.chat_join_request;
 
@@ -33,7 +51,7 @@ bot.on('chat_join_request', async (ctx) => {
             parse_mode: 'Markdown',
             reply_markup: {
                 inline_keyboard: [
-                    [{ text: 'Join our Update Channel', url: 'https://t.me/Opleech_WD' }]
+                    [{ text: '🍁 Join our Update Channel 🍁', url: 'https://t.me/Opleech_WD' }]
                 ]
             }
         });
