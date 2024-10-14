@@ -1,4 +1,4 @@
-const { Telegraf } = require('telegraf');
+const { Telegraf, Markup } = require('telegraf');
 const express = require('express');
 require('dotenv').config();
 
@@ -22,8 +22,19 @@ bot.on('chat_join_request', async (ctx) => {
         // Approve the join request
         await ctx.telegram.approveChatJoinRequest(chat.id, from.id);
 
-        // Send a message to the user whose request was accepted
-        await ctx.telegram.sendMessage(from.id, `Your request to join the channel "${chat.title}" has been accepted!`);
+        // Create a message with an image, a button, and tag for the user
+        const messageText = `🎉 Congratulations [${from.first_name}](tg://user?id=${from.id}), your request to join the channel "${chat.title}" has been accepted!`;
+
+        // Send an image with a message and button
+        await ctx.telegram.sendPhoto(from.id, {
+            source: 'angelLogo/angel.jpg'  // Replace with the correct image path or URL
+        }, {
+            caption: messageText,
+            parse_mode: 'Markdown',
+            reply_markup: Markup.inlineKeyboard([
+                Markup.button.url('Join our Update Channel', 'https://t.me/Opleech_WD')  // Replace with your update channel link
+            ])
+        });
 
         console.log(`Approved join request for user: ${from.username || from.id} in channel: ${chat.title}`);
     } catch (error) {
