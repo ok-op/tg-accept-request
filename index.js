@@ -8,6 +8,11 @@ const app = express();
 // Endpoint for webhook
 app.use(bot.webhookCallback('/webhook'));
 
+// GET requests to the base URL
+app.get('/', (req, res) => {
+    res.send('Bot is running!');
+});
+
 // Define the webhook path and URL
 const WEBHOOK_PATH = '/webhook';
 const PORT = process.env.PORT || 3000;
