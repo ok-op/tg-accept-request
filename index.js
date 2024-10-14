@@ -28,7 +28,7 @@ bot.start(async (ctx) => {
     try {
         // Send a welcome image with buttons
         await ctx.telegram.sendPhoto(ctx.chat.id, {
-            source: 'angelLogo/angel.jpg'  // Ensure this path is correct
+            source: 'angelLogo/welcome.jpg'  // Ensure this path is correct
         }, {
             caption: welcomeMessage,
             parse_mode: 'Markdown',
@@ -61,7 +61,7 @@ bot.on('chat_join_request', async (ctx) => {
 
         // Send an image with a message and button
         await ctx.telegram.sendPhoto(from.id, {
-            source: 'angelLogo/angel.jpg'  // Ensure this path is correct
+            source: 'angelLogo/join-acceptd.jpg'  // Ensure this path is correct
         }, {
             caption: messageText,
             parse_mode: 'Markdown',
