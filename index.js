@@ -22,14 +22,14 @@ bot.start(async (ctx) => {
     
     // Send a welcome image with buttons
     await ctx.telegram.sendPhoto(ctx.chat.id, {
-        source: 'angelLogo/angel.jpg'  // Replace with the correct image path or URL
+        source: 'angelLogo/angel.jpg'  // Ensure this path is correct
     }, {
         caption: welcomeMessage,
         parse_mode: 'Markdown',
         reply_markup: Markup.inlineKeyboard([
             [{ text: '✨ Join Our Update Channel ✨', url: 'https://t.me/Opleech_WD' }],
             [{ text: '✉️ টপিক গ্রুপ জয়েন করুন ✉️', url: 'https://t.me/+XfmrBSzTyRFlZTI9' }] // Replace with your second channel link
-        ]).resize() // Optional: Resize buttons to fit the screen
+        ])
     });
 });
 
@@ -46,7 +46,7 @@ bot.on('chat_join_request', async (ctx) => {
 
         // Send an image with a message and button
         await ctx.telegram.sendPhoto(from.id, {
-            source: 'angelLogo/angel.jpg'  // Replace with the correct image path or URL
+            source: 'angelLogo/angel.jpg'  // Ensure this path is correct
         }, {
             caption: messageText,
             parse_mode: 'Markdown',
