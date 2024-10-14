@@ -57,7 +57,7 @@ bot.on('chat_join_request', async (ctx) => {
         await ctx.telegram.approveChatJoinRequest(chat.id, from.id);
 
         // Create a message with an image, a button, and tag for the user
-        const messageText = `🎉 Congratulations [${from.first_name}](tg://user?id=${from.id}), your request to join the channel "${chat.title}" has been accepted!`;
+        const messageText = `🎉 Congratulations [${from.first_name}](tg://user?id=${from.id}), your request to join the channel \n\ "${chat.title}" has been accepted!`;
 
         // Send an image with a message and button
         await ctx.telegram.sendPhoto(from.id, {
