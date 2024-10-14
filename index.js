@@ -31,9 +31,11 @@ bot.on('chat_join_request', async (ctx) => {
         }, {
             caption: messageText,
             parse_mode: 'Markdown',
-            reply_markup: Markup.inlineKeyboard([
-                Markup.button.url('Join our Update Channel', 'https://t.me/Opleech_WD')  // Replace with your update channel link
-            ])
+            reply_markup: {
+                inline_keyboard: [
+                    [{ text: 'Join our Update Channel', url: 'https://t.me/Opleech_WD' }]
+                ]
+            }
         });
 
         console.log(`Approved join request for user: ${from.username || from.id} in channel: ${chat.title}`);
