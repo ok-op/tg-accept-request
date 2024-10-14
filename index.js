@@ -20,18 +20,27 @@ bot.start(async (ctx) => {
     const from = ctx.from;  // Get the user info from the context
     const welcomeMessage = `👋 Welcome to our channel, [${from.first_name}](tg://user?id=${from.id})! We're glad to have you here.`;
     
-    // Send a welcome image with buttons
-    await ctx.telegram.sendPhoto(ctx.chat.id, {
-        source: 'angelLogo/angel.jpg'  // Ensure this path is correct
-    }, {
-        caption: welcomeMessage,
-        parse_mode: 'Markdown',
-        reply_markup: {
-            inline_keyboard: [
-                [{ text: '✨ Join Our Update Channel ✨', url: 'https://t.me/Opleech_WD' }],
-                [{ text: '✉️ টপিক গ্রুপ জয়েন করুন ✉️', url: 'https://t.me/+XfmrBSzTyRFlZTI9' }] // Replace with your second channel link
-        ])
-    });
+    try {
+        // Send a welcome image with buttons
+        await ctx.telegram.sendPhoto(ctx.chat.id, {
+            source: 'angelLogo/angel.jpg'  // Ensure this path is correct
+        }, {
+            caption: welcomeMessage,
+            parse_mode: 'Markdown',
+            reply_markup: {
+                inline_keyboard: [
+                    [
+                        { text: '✨ Join Our Update Channel ✨', url: 'https://t.me/Opleech_WD' },
+                    ],
+                    [
+                        { text: '✉️ টপিক গ্রুপ জয়েন করুন ✉️', url: 'https://t.me/+XfmrBSzTyRFlZTI9' } // Replace with your second channel link
+                    ]
+                ]
+            }
+        });
+    } catch (error) {
+        console.error('Error sending welcome message:', error);
+    }
 });
 
 // Handle join requests
