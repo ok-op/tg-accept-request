@@ -17,7 +17,8 @@ bot.telegram.setWebhook(`${URL}${WEBHOOK_PATH}`);
 
 // Handle the /start command
 bot.start(async (ctx) => {
-    const welcomeMessage = `👋 Welcome to our channel! [${from.first_name}](tg://user?id=${from.id}), We're glad to have you here.`;
+    const from = ctx.from;  // Get the user info from the context
+    const welcomeMessage = `👋 Welcome to our channel, [${from.first_name}](tg://user?id=${from.id})! We're glad to have you here.`;
     
     // Send a welcome image with buttons
     await ctx.telegram.sendPhoto(ctx.chat.id, {
@@ -26,7 +27,7 @@ bot.start(async (ctx) => {
         caption: welcomeMessage,
         parse_mode: 'Markdown',
         reply_markup: Markup.inlineKeyboard([
-            [{ text: '✨ Join Our update channel ✨', url: 'https://t.me/Opleech_WD' }],
+            [{ text: '✨ Join Our Update Channel ✨', url: 'https://t.me/Opleech_WD' }],
             [{ text: '✉️ টপিক গ্রুপ জয়েন করুন ✉️', url: 'https://t.me/+XfmrBSzTyRFlZTI9' }] // Replace with your second channel link
         ])
     });
