@@ -16,6 +16,8 @@ COPY . .
 # Expose the port the app runs on (optional, only needed if running locally)
 EXPOSE 3000
 
+USER 10014
+
 # Define environment variable (optional, but if you want to pass vars in Docker)
 ENV NODE_ENV production
 
